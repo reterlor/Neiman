@@ -1,5 +1,4 @@
-% !TeX spellcheck = ru_RU
-\documentclass[twoside,12pt]{article}
+\documentclass[12pt]{article}
 \usepackage{titlesec}
 \usepackage{enumitem}
 \usepackage[T2A,T1]{fontenc}
@@ -16,6 +15,56 @@
 left=1in,right=1in,top=1in,bottom=1in,%
 footskip=.10in]{geometry}
 
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode} 
+
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[T2A,T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{fancyhdr}
+
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\setlength{\headheight}{15pt}
+\usepackage[a4paper,bindingoffset=0.2in,%
+left=1in,right=1in,top=1in,bottom=1in,%
+footskip=.10in]{geometry}
+%---enable russian----
+
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+% PROBABILITY SYMBOLS
+\newcommand*\PROB\Pr 
+\DeclareMathOperator*{\EXPECT}{\mathbb{E}}
+
+
+% Sets, Rngs, ets 
+\newcommand{\N}{{{\mathbb N}}}
+\newcommand{\Z}{{{\mathbb Z}}}
+\newcommand{\R}{{{\mathbb R}}}
+\newcommand{\Zp}{\ints_p} % Integers modulo p
+\newcommand{\Zq}{\ints_q} % Integers modulo q
+\newcommand{\Zn}{\ints_N} % Integers modulo N
+
+% Landau 
+\newcommand{\bigO}{\mathcal{O}}
+\newcommand*{\OLandau}{\bigO}
+\newcommand*{\WLandau}{\Omega}
+\newcommand*{\xOLandau}{\widetilde{\OLandau}}
+\newcommand*{\xWLandau}{\widetilde{\WLandau}}
+\newcommand*{\TLandau}{\Theta}
+\newcommand*{\xTLandau}{\widetilde{\TLandau}}
+\newcommand{\smallo}{o} %technically, an omicron
+\newcommand{\softO}{\widetilde{\bigO}}
+\newcommand{\wLandau}{\omega}
+\newcommand{\negl}{\mathrm{negl}} 
+
+% Misc
 \newcommand{\eps}{\varepsilon}
 \newcommand{\inprod}[1]{\left\langle #1 \right\rangle}
 
@@ -36,14 +85,65 @@ footskip=.10in]{geometry}
 	\vspace*{4mm}
 }
 
-\newcommand{\lecture}[4]{\handout{#1}{#2}{#3}{#4}{Cистема верстки LaTeX  #1}}
+\newcommand{\lecture}[4]{\handout{#1}{#2}{#3}{Scribe: #4}{Cистема верстки LaTeX #1}}
 
+\newtheorem{theorem}{Теорема}
+\newtheorem{lemma}{Лемма}
+\newtheorem{definition}{Определение}
+\newtheorem{corollary}{Следствие}
+\newtheorem{fact}{Факт}
 
-
-
+% 1-inch margins
+\topmargin 0pt
+\advance \topmargin by -\headheight
+\advance \topmargin by -\headsep
+\textheight 8.9in
+\oddsidemargin 0pt
+\evensidemargin \oddsidemargin
+\marginparwidth 0.5in
+\textwidth 6.5in
+\parindent 0in
+\parskip 1.5ex
 
 \begin{document}
 \lecture{}{Лето 2020}{}{Нейман Даниил}	
+
+\section{Название главы}
+
+\section{Алгоритм}
+
+\begin{algorithm}[ph]
+	\caption{Заголовок}
+	\label{alg:AlgName}
+	\textbf{Input:} Input  \\
+	\textbf{Output:} Output
+	
+	\begin{algorithmic}[1]
+		
+		\State 
+		\State{} \Return{} 
+	\end{algorithmic}
+	
+\end{algorithm}
+
+\section{Анализ}
+
+\begin{theorem}
+	Утверждение теоремы
+\end{theorem}
+
+\begin{proof}
+	Док-во здесь
+\end{proof}
+
+\subsection{Blah blah blah}
+Тест
+
+\subsubsection{Blah blah blah}
+Тест
+
+\paragraph{Bibliography.}
+
 \newpage	
 	
 \renewcommand{\headrulewidth}{0pt}
@@ -134,25 +234,26 @@ footskip=.10in]{geometry}
 Для этого потребуется знание нескольких фактов касающихся 
 "подходящих дробей" \! цепной дроби, давайте начнем с их доказательства.}
 
-\begin{quote}
-\noindent{\textsc{Определение 13-2.} Цепная дробь полученная из отделения от $[a_0;a_1,...,a_n]$
-неполных частных после $k$-ого элемента $a_k$ называется $k$-ой подходящей дробью и обозначается $C_k;$
-\begin{align}
-C_k=[a_0;a_1,...,a_k], \tag*{$(1\leqslant k\leqslant n).$}
-\end{align}
-
-Нулевой подходящей дробью $C_0$ будем обозначать $a_0$. }\\
-\end{quote}
+	\begin{definition}
+	{
+		Цепная дробь полученная из отделения от $[a_0;a_1,...,a_n]$
+		неполных частных после $k$-ого элемента $a_k$ называется $k$-ой подходящей дробью и обозначается $C_k;$
+		\begin{align}
+		C_k=[a_0;a_1,...,a_k], \tag*{$(1\leqslant k\leqslant n).$}
+		\end{align}
+		Нулевой подходящей дробью $C_0$ будем обозначать $a_0$. 
+	}
+	\end{definition}
 
 \indent{Стоит подметить, что для $k<n$, если $a_k$ заменяется значением $a_k+1/a_{k+1}$, тогда подходящая дробь $C_k$ становится подходящей дробью $C_k+1$;
 $$[a_0;a_1,...,a_{k-1},a_k+1/a_{k+1}]=[a_0;a_1,...,a_{k-1},a_k,a_{k+1}]=C_{k+1}.$$}
 
-	\newpage
-
+\newpage
 \renewcommand{\headrulewidth}{0pt}
 \lhead{\textbf{Раздел 13-3}}
 \chead{\textbf{Конечные Цепные Дроби}}
 \rhead{\textbf{305}}
+
 \noindent{Вряд ли нуждается в замечании, что последняя подходящая дробь $C_n$ всегда равна рациональному числу первоначальной цепной дроби. }\\
 \indent{Возвращаясь к нашему примеру $19/51=[0;2,1,2,6],$ последователые \\подходящие дроби равны 
 \begin{gather}
@@ -183,26 +284,33 @@ p_k=a_kp_{k-1}+p_{k-2} & q_k=a_kq_{k-1}+q_{k-2}
 &C_2=a_0+\frac{1}{a_1+\frac{1}{a_2}}=\frac{a_2(a_1a_0+1)+a_0}{a_2a_1+1}=\frac{p_2}{q_2}.&&\notag
 \end{align}
 \end{gather}
-\noindent{Успех зависит от того, сможем ли мы показать что это взаимоотношение поддерживается и далее. Это содержание Теоремы 13-6.}
+\noindent{Успех зависит от того, сможем ли мы показать что это взаимоотношение поддерживается и далее. Это содержание Теоремы 2.}
 
 \newpage
 \renewcommand{\headrulewidth}{0pt}
 \lhead{\textbf{306}}
 \chead{\textbf{Числа Фибоначчи и Цепные Дроби}}
 \rhead{\textbf{Глава 13}}
-\noindent{\textsc{Теорема 13-6. \textit{\textbf{ k-ая подходящая дробь простой цепной дроби $[a_0;a_1,...,a_n]$ имеет значение}}}}
+
+\begin{theorem}
+{
+k-ая подходящая дробь простой цепной дроби $[a_0;a_1,...,a_n]$ имеет значение
 \begin{align}
 C_k=p_k/q_k \tag*{$(0\leqslant k\leqslant n).$}
 \end{align}
-\noindent{\textit{\textbf{Доказательство: }} Рассмотренные выше замечания указывают, что теорема выполняется для $k=0,1,2.$
-Допустим, что она выполняется и для $k=m$, где $2\leqslant m<n$; то есть для этого m,}
+}
+\end{theorem}
+
+\begin{proof}
+ассмотренные выше замечания указывают, что теорема выполняется для $k=0,1,2.$
+Допустим, что она выполняется и для $k=m$, где $2\leqslant m<n$; то есть для этого m,
 \makeatletter
 \newcommand{\LeftEqNo}{\let\veqno\@@leqno}
 \makeatother
 \begin{equation}\LeftEqNo
 C_m=p_m/q_m =\frac{a_mp_{m-1}+p_{m-2}}{a_mq_{m-1}+q_{m-2}}.\tag{\textasteriskcentered}
 \end{equation}
-\noindent{Обратим внимание, что числа $p_{m-1},q_{m-1},p_{m-2},q_{m-2}$ зависят от первых $m-1$ неполных частных $a_1,a_2,...,a_m-1,$ следовательно не зависят от $a_m$. Таким образом формула $(\textasteriskcentered)$ остается действительной если заменить $a_m$ значением $a_m+1/a_{m+1}:$
+Обратим внимание, что числа $p_{m-1},q_{m-1},p_{m-2},q_{m-2}$ зависят от первых $m-1$ неполных частных $a_1,a_2,...,a_m-1,$ следовательно не зависят от $a_m$. Таким образом формула $(\textasteriskcentered)$ остается действительной если заменить $a_m$ значением $a_m+1/a_{m+1}:$
 $$\bigg[a_0;a_1,...,a_{m-1},a_m+\frac{1}{a_{m+1}}\bigg]=\frac{\Big(a_m+\frac{1}{a_{m+1}}\Big)p_{m-1}+p_{m-2}}{\Big(a_m+\frac{1}{a_{m+1}}\Big)q_{m-1}+q_{m-2}}$$
 Из вышесказанного, цель этой замены в том, чтобы изменить $C_m$ в подходящую дробь $C_{m+1}$ так, что
 \begin{equation}
@@ -212,7 +320,9 @@ C_{m+1}&=\frac{\Big(a_m+\frac{1}{a_{m+1}}\Big)p_{m-1}+p_{m-2}}{\Big(a_m+\frac{1}
 &=\frac{a_{m+1}p_m+p_{m-1}}{a_{m+1}q_m+q_{m-1}.}
 \end{aligned}
 \end{equation}\\
-Но это именно тот вид, который теорема должна принимать при $k=m+1$. Значит по методу математической индукции теорема доказана.}\\
+Но это именно тот вид, который теорема должна принимать при $k=m+1$. Значит по методу математической индукции теорема доказана.
+\end{proof}
+
 \indent{Рассмотрим это на конкретном примере. $19/51 = [0;2,1,2,6]:$}
 
 \begin{center}
@@ -225,4 +335,4 @@ C_{m+1}&=\frac{\Big(a_m+\frac{1}{a_{m+1}}\Big)p_{m-1}+p_{m-2}}{\Big(a_m+\frac{1}
 	\end{array}$
 \end{center}
 \pagebreak
-	\end{document}
+\end{document}
